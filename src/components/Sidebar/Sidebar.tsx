@@ -16,21 +16,19 @@ import AcUnitIcon from "@mui/icons-material/AcUnit";
 
 export const Sidebar = () => {
   return (
-    <Box sx={sideBarContainerStyles}>
-      <nav>
-        <List>
-          {MockDataService.sideMenuItems.map((item) => (
-            <ListItem sx={listItemStyles}>
-              <ListItemButton sx={listItemButtonStyles}>
-                <ListItemIcon>
-                  <AcUnitIcon />
-                </ListItemIcon>
-                <ListItemText>{item.text}</ListItemText>
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-      </nav>
+    <Box component={"nav"} sx={sideBarContainerStyles}>
+      <List>
+        {MockDataService.sideMenuItems.map((item) => (
+          <ListItem sx={listItemStyles}>
+            <ListItemButton sx={listItemButtonStyles}>
+              <ListItemIcon>
+                <AcUnitIcon />
+              </ListItemIcon>
+              <ListItemText>{item.text}</ListItemText>
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
     </Box>
   );
 };

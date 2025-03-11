@@ -1,13 +1,12 @@
 import { ThemeProvider } from "@mui/material";
 import "./App.css";
-import { Header, Sidebar } from "./components";
 import { customTheme } from "./styles/theme";
+import { LegislationPage } from "./pages";
 
 function App() {
   return (
     <ThemeProvider theme={customTheme}>
-      <Header />
-      <Sidebar />
+      <LegislationPage />
     </ThemeProvider>
   );
 }
