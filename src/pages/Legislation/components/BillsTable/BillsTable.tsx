@@ -3,47 +3,38 @@ import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { billsTableHeadCells } from "./BillsTable.utils";
-import { BillsTableRow } from "./BillsTableRow";
-import { IBill } from "../../../../models/Bill";
+import { IBillApiResponse } from "../../../../types/Bill";
+import api from "../../../../api";
+import { useQuery } from "@tanstack/react-query";
+import { BillsTableHead } from "./components/BillTableHead";
+import { BillsTableRow } from "./components/BillsTableRow";
+import { useCallback } from "react";
 
-function BillsTableHead() {
-  return (
-    <TableHead>
-      <TableRow>
-        {billsTableHeadCells.map((headCell) => (
-          <TableCell key={headCell.id} align={headCell.align}>
-            {headCell.label}
-          </TableCell>
-        ))}
-      </TableRow>
-    </TableHead>
-  );
-}
+export default function BillsTable() {
+  // Queries
+  const query = useQuery<IBillApiResponse>({
+    queryKey: ["todos"],
+    queryFn: api.legislations.getLegislations,
+  });
 
-interface IBillsTableProps {
-  rows: IBill[];
-}
-export default function BillsTable(props: IBillsTableProps) {
-  const { rows = [] } = props;
+  const rows = query?.data?.results?.map(({ bill }) => bill) || [];
+
+  const onRowClick = useCallback((id: string) => {}, []);
 
   return (
     <Box sx={{ width: "100%" }}>
       <Paper sx={{ width: "100%", mb: 2 }}>
         <TableContainer>
-          <Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle">
+          <Table>
             <BillsTableHead />
             <TableBody>
               {rows.map((row) => {
                 return (
                   <BillsTableRow
-                    onClick={function (id: string): void {
-                      throw new Error("Function not implemented.");
-                    }}
-                    key={row.billNo}
+                    onClick={onRowClick}
+                    key={`${row.billNo}-${row.uri}`}
                     {...row}
                   />
                 );

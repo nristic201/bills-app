@@ -4,7 +4,7 @@ export const billsTableHeadCells: {
   id: string;
   label: string;
   align?: TableCellProps["align"];
-} = [
+}[] = [
   {
     id: "number",
     label: "Number",
@@ -13,17 +13,17 @@ export const billsTableHeadCells: {
   {
     id: "type",
     label: "Type",
-    align: "right",
+    align: "center",
   },
   {
     id: "status",
     label: "Status",
-    align: "right",
+    align: "center",
   },
   {
     id: "sponsor",
     label: "Sponsor",
-    align: "right",
+    align: "center",
   },
   {
     id: "actions",

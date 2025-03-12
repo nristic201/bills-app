@@ -1,5 +1,5 @@
 import { SxProps } from "@mui/material";
-import { IBillStatus, IBillType } from "../../../../../models/Bill";
+import { IBillStatus } from "../../../../../../types/Bill";
 
 export const billStatusStylesMapper: { [name in IBillStatus]: SxProps } = {
   Defeated: {
