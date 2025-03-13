@@ -37,7 +37,7 @@ export const Modal: React.FC<IModalProps> = (props) => {
 
   return (
     <MuiModal open={open} onClose={handleOnClose}>
-      <Box sx={styles}>
+      <Box sx={styles} onClick={(e) => e.stopPropagation()}>
         <IconButton onClick={handleOnClose} sx={closeIconStyles}>
           <Close />
         </IconButton>
