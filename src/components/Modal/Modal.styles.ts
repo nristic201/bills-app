@@ -1,4 +1,4 @@
-import { SxProps } from "@mui/material";
+import { SxProps, Theme } from "@mui/material";
 
 export const modalContainerStyles: SxProps = {
   position: "absolute",
@@ -12,18 +12,20 @@ export const modalContainerStyles: SxProps = {
   flexDirection: "column",
   maxHeight: "calc(100% - 64px)",
   minWidth: 360,
+  padding: "16px",
 };
 
 export const modalContentStyles: SxProps = {
   overflowY: "auto",
-  p: 2,
 };
 
-export const modalHeaderStyles: SxProps = {
+export const modalHeaderStyles = (theme: Theme) => ({
   position: "relative",
-  p: 2,
   pb: 0,
-};
+  borderBottom: "1px solid",
+  borderColor: theme.palette.grey[300],
+  marginBottom: "24px",
+});
 
 export const closeIconStyles: SxProps = {
   position: "absolute",

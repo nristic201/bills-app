@@ -5,7 +5,7 @@ import {
   IconButton,
   SxProps,
 } from "@mui/material";
-import React, { useCallback } from "react";
+import React, { useCallback, useMemo } from "react";
 import {
   closeIconStyles,
   modalContainerStyles,
@@ -19,10 +19,11 @@ interface IModalProps {
   onClose: () => void;
   content: React.ReactNode;
   title?: string;
+  sx?: SxProps;
 }
 
 export const Modal: React.FC<IModalProps> = (props) => {
-  const { open, onClose, content, title } = props;
+  const { open, onClose, content, title, sx } = props;
 
   const handleOnClose = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -31,9 +32,12 @@ export const Modal: React.FC<IModalProps> = (props) => {
     },
     [onClose]
   );
+
+  const styles = useMemo(() => ({ ...modalContainerStyles, ...sx }), [sx]);
+
   return (
     <MuiModal open={open} onClose={handleOnClose}>
-      <Box sx={{ ...modalContainerStyles, width: 732 }}>
+      <Box sx={styles}>
         <IconButton onClick={handleOnClose} sx={closeIconStyles}>
           <Close />
         </IconButton>

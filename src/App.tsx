@@ -1,19 +1,25 @@
-import { ThemeProvider } from "@mui/material";
 import "./App.css";
-import { customTheme } from "./styles/theme";
-import { LegislationPage } from "./pages";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter, Route, Routes } from "react-router";
+import { routes } from "./router/routes";
+import { AuthContextProvider } from "./contexts/AuthContext/AuthContext.provider";
 
 // Create a client
 const queryClient = new QueryClient();
 
 function App() {
   return (
-    <ThemeProvider theme={customTheme}>
-      <QueryClientProvider client={queryClient}>
-        <LegislationPage />
-      </QueryClientProvider>
-    </ThemeProvider>
+    <AuthContextProvider>
+      <BrowserRouter>
+        <QueryClientProvider client={queryClient}>
+          <Routes>
+            {routes.map((route) => (
+              <Route {...route} index={route.index} />
+            ))}
+          </Routes>
+        </QueryClientProvider>
+      </BrowserRouter>
+    </AuthContextProvider>
   );
 }
 

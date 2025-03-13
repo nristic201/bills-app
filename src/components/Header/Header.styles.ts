@@ -1,8 +1,8 @@
-import { SxProps } from "@mui/material";
+import { Theme } from "@mui/material";
 
-export const headerStyles: SxProps = {
-  display: "flex",
-  flexDirection: "row",
+export const headerStyles = (theme: Theme) => ({
   gap: "16px",
-  justifyContent: "flex-end",
-};
+  padding: "16px",
+  backgroundColor: theme.palette.background.default,
+  BorderBottom: theme.palette.grey[200],
+});

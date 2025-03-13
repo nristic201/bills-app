@@ -1,1 +1,1 @@
-export * from "./Legislation";
+export * from "./Bills";

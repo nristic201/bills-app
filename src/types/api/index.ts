@@ -1,5 +1,5 @@
 export interface IApiResponse<T, P> {
-  count: IApiResponseHead<T>;
+  head: IApiResponseHead<T>;
   results: P[];
 }
 

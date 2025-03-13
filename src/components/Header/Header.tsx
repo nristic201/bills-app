@@ -1,50 +1,41 @@
 import React from "react";
 import {
   Avatar,
-  Badge,
-  Box,
-  Container,
   IconButton,
   ListItemIcon,
   Menu,
   MenuItem,
+  Stack,
 } from "@mui/material";
 import { headerStyles } from "./Header.styles";
-import {
-  Settings,
-  Logout,
-  NotificationsNoneOutlined,
-} from "@mui/icons-material";
+import { Settings, Logout } from "@mui/icons-material";
 import { RotatingIcon } from "./components/RotatingIcon";
 
 export const Header: React.FC = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+
   const open = Boolean(anchorEl);
+
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   return (
-    <Container component={"header"} sx={headerStyles}>
-      <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
-        <IconButton>
-          <Badge variant="dot" color="error">
-            <NotificationsNoneOutlined />
-          </Badge>
-        </IconButton>
-        <IconButton
-          onClick={handleClick}
-          size="small"
-          aria-controls={open ? "account-menu" : undefined}
-          aria-haspopup="true"
-          aria-expanded={open ? "true" : undefined}
-        >
-          <Avatar>NR</Avatar>
-          <RotatingIcon open={open} />
-        </IconButton>
-      </Box>
+    <Stack
+      component={"header"}
+      sx={headerStyles}
+      direction={"row"}
+      alignItems="center"
+      justifyContent={"flex-end"}
+    >
+      <IconButton onClick={handleClick} size="small">
+        <Avatar>NR</Avatar>
+        <RotatingIcon open={open} />
+      </IconButton>
       <Menu
         anchorEl={anchorEl}
         id="account-menu"
@@ -86,6 +77,6 @@ export const Header: React.FC = () => {
           Logout
         </MenuItem>
       </Menu>
-    </Container>
+    </Stack>
   );
 };

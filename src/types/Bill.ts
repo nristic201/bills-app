@@ -49,3 +49,9 @@ export type IBillApiResponse = IApiResponse<
   IBillApiResponseCount,
   IBillApiResponseData
 >;
+
+export type IBillSortParams = {
+  skip: number;
+  limit: number;
+  bill_status: IBillStatus | null;
+};

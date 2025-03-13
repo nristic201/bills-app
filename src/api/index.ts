@@ -1,4 +1,4 @@
-import legislations from "./legislations";
+import legislations from "./bills";
 
 export default {
   legislations,

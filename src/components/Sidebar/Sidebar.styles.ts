@@ -1,30 +1,33 @@
-import { SxProps } from "@mui/material";
+import { SxProps, Theme } from "@mui/material";
 
-export const sideBarContainerStyles: SxProps = {
-  width: "320px",
+export const sideBarContainerStyles = (theme: Theme) => ({
+  gridArea: "sidebar",
+  width: "280px",
+  padding: "32px",
+  background: "white",
+  borderRight: "1px solid",
+  borderRightColor: theme.palette.grey[200],
+});
+
+export const listStyles: SxProps = {
+  display: "flex",
+  flexDirection: "column",
+  gap: "12px",
 };
-
 export const listItemStyles: SxProps = {
   padding: 0,
+  background: "primary.main",
 };
 
-export const listItemButtonStyles: SxProps = {
-  borderTopRightRadius: "16px",
-  borderBottomRightRadius: "16px",
-  position: "relative",
+export const linkStyles: SxProps = {
+  padding: "12px 16px",
+  borderRadius: "4px",
   "&:hover": {
-    backgroundColor: "primary.light",
-    color: "primary.main",
-    ".MuiSvgIcon-root": {
-      fill: "currentColor",
-    },
-    "&::after": {
-      content: `""`,
-      position: "absolute",
-      left: 0,
-      backgroundColor: "primary.main",
-      width: "4px",
-      height: "100%",
-    },
+    backgroundColor: "primary.main",
+    color: "white",
+  },
+  "&.active": {
+    backgroundColor: "primary.main",
+    color: "white",
   },
 };
