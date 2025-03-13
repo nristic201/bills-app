@@ -22,7 +22,7 @@ import { containerStyles } from "./BillsTable.styles";
 import { TableHeaderRow } from "../../../../components/TableHeaderRow";
 import { BillsTableActions } from "./components/BillsTableActions";
 import { useBillTableParams } from "./hooks/useBillsTableParams";
-import { ROWS_PER_PAGE } from "../../../../configs/Pagination";
+import { ROWS_PER_PAGE } from "../../../../utilities/constants/Pagination";
 
 export default function BillsTable() {
   const pagination = usePagination();

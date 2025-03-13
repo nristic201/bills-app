@@ -1,4 +1,4 @@
-import { httpClient } from "../../modules/httpClient";
+import { httpClient } from "../httpClient";
 import { IBill, IBillApiResponse, IBillSortParams } from "../../types/Bill";
 
 /**
