@@ -60,7 +60,7 @@ export const BillsFilterModal: React.FC<IBillsFilterModalProps> = (props) => {
         <Stack flexDirection={"column"} gap={"32px"} sx={{}}>
           <FormControl component="fieldset">
             <FormGroup>
-              <FormLabel sx={{ fontWeight: "bold" }}>Gender</FormLabel>
+              <FormLabel sx={{ fontWeight: "bold" }}>Status</FormLabel>
               <RadioGroup value={selectedStatus} onChange={handleStatusChange}>
                 {billStatusOptions.map((opt) => (
                   <FormControlLabel
