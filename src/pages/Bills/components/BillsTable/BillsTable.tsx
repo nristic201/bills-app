@@ -41,16 +41,18 @@ export default function BillsTable() {
 
   return (
     <Box sx={containerStyles}>
+      {/** Render overlay on additional api calls */}
       <Backdrop
         sx={(theme) => ({
           color: "#fff",
-          zIndex: theme.zIndex.drawer + 1,
+          zaIndex: theme.zIndex.drawer + 1,
           position: "absolute",
         })}
         open={isFetching}
       >
         <CircularProgress color="inherit" />
       </Backdrop>
+      {/** Render spinner on initial load */}
       {isLoading ? (
         <Stack
           flexDirection={"column"}
