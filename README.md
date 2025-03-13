@@ -31,13 +31,12 @@ Types - global Types and Intefaces
 Utilities - utility functions and helpers
 
 ## Component Structure
-```src/
-├── components/
-│   ├── ComponentA/
-│   │   ├── ComponentA.tsx
-│   │   ├── ComponentA.test.tsx
-│   │   ├── ComponentA.styles.css
-│   │   └── Page1.ts
+```
+ ├── ComponentA/
+ │   ├── ComponentA.tsx
+ │   ├── ComponentA.test.tsx
+ │   ├── ComponentA.styles.css
+ │   └── index.ts
 ```
 
 
