@@ -1,3 +1,11 @@
+## Requirement
+```
+Allow a user to filter bills by Bill type field. 
+```
+`bill_type` param is not available in api request, instead user will be able to filter by `bill_status`.
+
+We could eventually let user filter by `bill type` but it would be in scope of current data in table(filter displayed records). It makes no sense to me as all filters should be applied on the server.
+
 ## Running Project
 
 Navigate into root folder and run
@@ -5,6 +13,13 @@ Navigate into root folder and run
 ```
 npm run dev
 ```
+
+To run tests
+```
+npm run test
+```
+
+Tests are available for global components.
 
 React Context is used to store user data. We could use redux or zustand as well.  
 
