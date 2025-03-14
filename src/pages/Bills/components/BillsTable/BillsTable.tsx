@@ -30,9 +30,10 @@ export default function BillsTable() {
 
   const { updateStatus, params } = useBillTableParams(page, rowsPerPage);
 
-  const { data, isLoading, isFetching } = useQuery<IBillApiResponse>({
+  const { data, isLoading, isRefetching } = useQuery<IBillApiResponse>({
     queryKey: ["bills", params],
     queryFn: () => api.legislations.getLegislations(params),
+    placeholderData: (prev) => prev,
   });
 
   const { head, results } = data || {};
@@ -48,7 +49,7 @@ export default function BillsTable() {
           zaIndex: theme.zIndex.drawer + 1,
           position: "absolute",
         })}
-        open={isFetching}
+        open={isRefetching}
       >
         <CircularProgress color="inherit" />
       </Backdrop>
