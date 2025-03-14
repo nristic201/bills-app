@@ -1,10 +1,10 @@
 export const MockDataService = {
   sideMenuItems: [
-    { text: "Legislation", icon: "apps", to: "/" },
+    { text: "Legislation", to: "/", id: "1" },
     {
       text: "Page 2",
-      icon: "users02",
       to: "/page2",
+      id: "",
     },
   ],
 };

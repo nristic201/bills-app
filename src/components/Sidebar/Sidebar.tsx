@@ -7,7 +7,6 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { MockDataService } from "../../services/mockData.service";
 import {
   linkStyles,
   listItemStyles,
@@ -16,7 +15,16 @@ import {
 } from "./Sidebar.styles";
 import { NavLink } from "react-router";
 
-export const Sidebar: React.FC = () => {
+export interface ISideMenuItem {
+  to: string;
+  text: string;
+  id: string;
+}
+interface ISidebarProps {
+  items: ISideMenuItem[];
+}
+
+export const Sidebar: React.FC<ISidebarProps> = ({ items }) => {
   return (
     <Box component={"nav"} sx={sideBarContainerStyles}>
       <Stack gap={"32px"}>
@@ -24,8 +32,8 @@ export const Sidebar: React.FC = () => {
           Dashboard
         </Typography>
         <List sx={listStyles}>
-          {MockDataService.sideMenuItems.map((item) => (
-            <ListItem sx={listItemStyles}>
+          {items.map((item) => (
+            <ListItem sx={listItemStyles} key={item.id}>
               <ListItemButton sx={linkStyles} component={NavLink} to={item.to}>
                 <ListItemText>{item.text}</ListItemText>
               </ListItemButton>
