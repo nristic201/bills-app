@@ -41,7 +41,7 @@ export const BillSponsorsModal: React.FC<IBillSponsorsModalProps> = (props) => {
           </TableHead>
           <TableBody>
             {sponsors.map((s) => (
-              <TableRow>
+              <TableRow key={`sponsor-${s.as.showAs || s.by.showAs}`}>
                 <TableCell>{s.as.showAs || "N/A"}</TableCell>
                 <TableCell>{s.by.showAs || "N/A"}</TableCell>
               </TableRow>

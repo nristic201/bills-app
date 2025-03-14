@@ -14,7 +14,7 @@ function App() {
         <QueryClientProvider client={queryClient}>
           <Routes>
             {routes.map((route) => (
-              <Route {...route} index={route.index} />
+              <Route key={route.path} {...route} index={route.index} />
             ))}
           </Routes>
         </QueryClientProvider>
