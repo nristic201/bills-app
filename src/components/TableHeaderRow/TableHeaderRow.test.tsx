@@ -1,4 +1,4 @@
-import { render, screen, within } from "@testing-library/react";
+import { render, screen, waitFor, within } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
 import { TableHeaderRow } from "./TableHeaderRow"; // Adjust the import path as necessary
 import "@testing-library/jest-dom/vitest"; // Import jest-dom for Vitest
@@ -26,8 +26,8 @@ const TableComponent = () => {
   );
 };
 describe("TableHeaderRow Component", () => {
-  render(<TableComponent />);
   it("renders TableCell elements as <th> tags", () => {
+    render(<TableComponent />);
     const tableCells = screen.getAllByRole("columnheader");
     tableCells.forEach((cell) => {
       expect(cell.tagName).toBe("TH");
@@ -35,7 +35,9 @@ describe("TableHeaderRow Component", () => {
   });
 
   it("renders the correct labels in each TableCell", () => {
-    const table = screen.getByRole("table");
+    render(<TableComponent />);
+    const table = screen.getAllByRole("table")[0];
+
     const tableHeaderRow = within(table).getAllByRole("row")[0];
 
     mockItems.forEach((item) => {
@@ -45,14 +47,17 @@ describe("TableHeaderRow Component", () => {
   });
 
   it("renders the correct alignment for each TableCell", async () => {
-    const table = screen.getByRole("table");
+    render(<TableComponent />);
+    const table = screen.getAllByRole("table")[0];
     const tableHeaderRow = within(table).getAllByRole("row")[0];
 
-    mockItems.forEach((item) => {
-      const cell = within(tableHeaderRow).getByText(item.label);
-      expect(cell).toHaveClass(
-        `MuiTableCell-align${capitalize(item.align as string)}`
-      );
+    await waitFor(() => {
+      mockItems.forEach((item) => {
+        const cell = within(tableHeaderRow).getByText(item.label);
+        expect(cell).toHaveClass(
+          `MuiTableCell-align${capitalize(item.align as string)}`
+        );
+      });
     });
   });
 });
